@@ -13,6 +13,15 @@ function generateRandomNumberBetweenRange(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 }
 
+function generateArrayOfRandomNumbers(amount) {
+  const randomNumbers = [];
+  for (let current = 0; current < amount; current++) {
+    randomNumbers.push(generateRandomNumberBetweenRange(0, 9))
+  }
+
+  return randomNumbers;
+}
+
 /**
  * Function to round a number using 11 as divider
  * @param {number} dirtyNumber Number to round
@@ -38,14 +47,7 @@ function changeValueBiggerThanTenToZero(value) {
  * @returns {string} The generated document
  */
 function generateDocument(type = 'cpf') {
-  const firstNumber = generateRandomNumberBetweenRange(0, 9);
-  const secondNumber = generateRandomNumberBetweenRange(0, 9);
-  const thirdNumber = generateRandomNumberBetweenRange(0, 9);
-  const fourthNumber = generateRandomNumberBetweenRange(0, 9);
-  const fifthNumber = generateRandomNumberBetweenRange(0, 9);
-  const sixthNumber = generateRandomNumberBetweenRange(0, 9);
-  const seventhNumber = generateRandomNumberBetweenRange(0, 9);
-  const eighthNumber = generateRandomNumberBetweenRange(0, 9);
+  const [firstNumber, secondNumber, thirdNumber, fourthNumber, fifthNumber, sixthNumber, seventhNumber, eighthNumber] = generateArrayOfRandomNumbers(8);
   const ninthNumber = type === 'cpf' ? generateRandomNumberBetweenRange(0, 9) : 0;
 
   if (type === 'cpf') {
@@ -102,7 +104,8 @@ function generateDocument(type = 'cpf') {
   );
   const firstDigit = changeValueBiggerThanTenToZero(firstDigitDirty);
 
-  const secondDigitDirty = 11 - roundNumber(firstDigit * 2 +
+  const secondDigitDirty = 11 - roundNumber(
+    firstDigit * 2 +
     twelfthNumber * 3 +
     eleventhNumber * 4 +
     tenthNumber * 5 +
