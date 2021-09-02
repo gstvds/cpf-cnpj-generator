@@ -1,0 +1,33 @@
+{
+  "name": "cpf-cnpj-generator",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": {
+    "name": "Gustavo Silva",
+    "email": "gstvds@icloud.com"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=12"
+  },
+  "scripts": {
+    "postinstall": "alfy-init",
+    "preuninstall": "alfy-cleanup"
+  },
+  "files": [
+    "index.js",
+    "icon.png",
+    "info.plist"
+  ],
+  "keywords": [
+    "alfred",
+    "workflow",
+    "alfy",
+    "cpf",
+    "cnpj",
+    "generator"
+  ],
+  "dependencies": {
+    "alfy": "^0.12.1"
+  }
+}
